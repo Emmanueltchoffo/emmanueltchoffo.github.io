@@ -1,0 +1,14 @@
+PORTFOLIO D'EMMANUEL TCHOFFO
+
+Tous les fichiers sont au même endroit (pas de sous-dossier) :
+- index.html        -> la page (ne pas toucher)
+- publications.js   -> LA LISTE DE TES PUBLICATIONS
+- emmanuel.jpg      -> ta photo
+- pub1.mp4, pub2.mp4... -> tes vidéos
+
+AJOUTER UNE VIDÉO
+1. Envoie la vidéo à côté de index.html, nommée pub1.mp4 (puis pub2.mp4, etc.)
+   Astuce : exporte-la depuis CapCut en 720p pour qu'elle fasse moins de 25 Mo.
+2. Dans publications.js, ajoute une ligne entre [ et ] :
+   { titre: "Vidéo vidange moto", plateforme: "TikTok", client: "QASKI", date: "Novembre 2026", video: "pub1.mp4" },
+3. Enregistre (Commit changes sur GitHub). Le site se met à jour en 1 à 2 minutes.

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Emmanuel Tchoffo · Content Creator & Community Manager</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Lato:wght@400;700;900&display=swap">
+<style>
+  :root{
+    --navy:#2E4A6B; --navy-dark:#1E3048; --sand:#D9C3A0; --sand-soft:#F3ECE0;
+    --ink:#22262E; --muted:#5B6270; --paper:#FBF9F5; --line:#E6DFD2;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Lato',Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:10;background:rgba(251,249,245,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .logo{font-family:'Playfair Display',Georgia,serif;font-weight:700;color:var(--navy);letter-spacing:2px;text-decoration:none}
+  .links{display:flex;gap:28px}
+  .links a{text-decoration:none;font-weight:700;font-size:14px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+  .links a:hover{color:var(--navy)}
+
+  /* HERO */
+  header{padding:72px 0 64px}
+  .hero{display:grid;grid-template-columns:300px 1fr;gap:56px;align-items:center}
+  .photo{position:relative}
+  .photo img{width:100%;aspect-ratio:1/1.03;object-fit:cover;border-radius:20px;display:block;position:relative;z-index:1}
+  .photo::before{content:"";position:absolute;inset:18px -18px -18px 18px;background:var(--sand);border-radius:20px}
+  .eyebrow{font-size:14px;font-weight:900;letter-spacing:4px;text-transform:uppercase;color:#9A7B4F}
+  h1{font-family:'Playfair Display',Georgia,serif;font-size:clamp(40px,6vw,68px);line-height:1.05;color:var(--navy);margin:12px 0 18px;letter-spacing:1px}
+  .tagline{font-size:19px;color:var(--muted);max-width:600px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:2px solid var(--navy)}
+  .btn.primary{background:var(--navy);color:#fff}
+  .btn.primary:hover{background:var(--navy-dark)}
+  .btn.ghost{color:var(--navy)}
+  .btn.ghost:hover{background:var(--sand-soft)}
+  .contact-line{margin-top:18px;font-size:15px;color:var(--muted)}
+
+  /* SECTIONS */
+  section{padding:72px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+  .sec-head::before{content:"";width:36px;height:8px;background:var(--sand);border-radius:2px}
+  h2{font-family:'Playfair Display',Georgia,serif;font-size:36px;color:var(--navy);letter-spacing:1px}
+  .sec-sub{color:var(--muted);margin-bottom:32px}
+
+  /* PUBLICATIONS */
+  .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+  .chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 18px;font:700 14px 'Lato',sans-serif;color:var(--muted);cursor:pointer}
+  .chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:24px}
+  .card{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s, box-shadow .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(30,48,72,.12)}
+  .thumb{position:relative;aspect-ratio:9/16;background:linear-gradient(135deg,var(--navy),#4C6F96);display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Playfair Display',serif;font-size:22px}
+  .thumb img,.thumb video{width:100%;height:100%;object-fit:cover;display:block}
+  .badge{pointer-events:none;position:absolute;top:12px;left:12px;background:rgba(255,255,255,.92);color:var(--navy);font-size:12px;font-weight:900;letter-spacing:1px;text-transform:uppercase;padding:5px 11px;border-radius:999px}
+  .card-body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card-body h3{font-size:18px;line-height:1.3}
+  .meta{font-size:14px;color:var(--muted)}
+  .card-body a{margin-top:auto;padding-top:10px;font-weight:700;color:var(--navy);text-decoration:none;font-size:15px}
+  .card-body a:hover{text-decoration:underline}
+  .empty{border:2px dashed var(--line);border-radius:18px;padding:48px 24px;text-align:center;color:var(--muted);background:#fff}
+  .empty b{display:block;font-family:'Playfair Display',serif;font-size:24px;color:var(--navy);margin-bottom:6px}
+
+  /* PARCOURS */
+  .two{display:grid;grid-template-columns:1.4fr 1fr;gap:56px}
+  .job{padding:0 0 28px 24px;border-left:2px solid var(--line);position:relative}
+  .job::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--sand);border:3px solid var(--paper)}
+  .job h3{font-size:17px;letter-spacing:1px;text-transform:uppercase;color:var(--navy)}
+  .job .when{font-size:14px;font-weight:700;color:#9A7B4F}
+  .job ul{margin:8px 0 0 18px;color:var(--muted)}
+  .box{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;margin-bottom:24px}
+  .box h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--navy);margin-bottom:14px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{background:var(--sand-soft);color:var(--navy-dark);font-weight:700;font-size:14px;padding:7px 14px;border-radius:999px}
+  .edu p{margin-bottom:12px}
+  .edu b{color:var(--navy)}
+  .edu span{display:block;font-size:14px;color:var(--muted)}
+
+  /* CONTACT */
+  .contact{background:var(--navy);color:#fff;border-radius:24px;padding:48px;display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
+  .contact h2{color:#fff}
+  .contact p{color:#D6DEE9;margin-top:6px}
+  .contact .btn{border-color:#fff}
+  .contact .btn.primary{background:#fff;color:var(--navy)}
+  .contact .btn.ghost{color:#fff}
+  .contact .btn.ghost:hover{background:rgba(255,255,255,.1)}
+  footer{padding:32px 0 48px;text-align:center;color:var(--muted);font-size:14px}
+
+  @media (max-width:800px){
+    .links{display:none}
+    .hero{grid-template-columns:1fr;gap:40px;text-align:center}
+    .photo{max-width:240px;margin:0 auto}
+    .tagline{margin:0 auto}
+    .cta{justify-content:center}
+    .two{grid-template-columns:1fr}
+    .contact{padding:32px}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="logo" href="#top">E. TCHOFFO</a>
+  <div class="links">
+    <a href="#publications">Publications</a>
+    <a href="#parcours">Parcours</a>
+    <a href="#contact">Contact</a>
+  </div>
+</div></nav>
+
+<header id="top"><div class="wrap hero">
+  <div class="photo"><img src="emmanuel.jpg" alt="Portrait d’Emmanuel Tchoffo"></div>
+  <div>
+    <p class="eyebrow">Content Creator · Community Management</p>
+    <h1>Emmanuel Tchoffo</h1>
+    <p class="tagline">Je crée des contenus vidéo et visuels engageants pour valoriser les marques sur TikTok, Instagram et les autres réseaux sociaux.</p>
+    <div class="cta">
+      <a class="btn primary" href="#publications">Voir mes publications</a>
+      <a class="btn ghost" href="https://wa.me/237657848690">Me contacter sur WhatsApp</a>
+    </div>
+    <p class="contact-line">Douala, Cameroun · +237 657 84 86 90 · emmanueltchoffo19@gmail.com</p>
+  </div>
+</div></header>
+
+<section id="publications"><div class="wrap">
+  <div class="sec-head"><h2>Mes publications</h2></div>
+  <p class="sec-sub">Une sélection de contenus que j’ai créés : vidéos, visuels et campagnes pour les réseaux sociaux.</p>
+  <div class="filters" id="filters"></div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="parcours"><div class="wrap two">
+  <div>
+    <div class="sec-head"><h2>Expérience</h2></div>
+    <p class="sec-sub">Création de contenu, communication digitale et développement web.</p>
+    <div class="job">
+      <h3>Content Creator</h3>
+      <p class="when">Nova Clips · 2025 – 2026</p>
+      <ul>
+        <li>Création de contenus visuels et vidéos pour les réseaux sociaux.</li>
+        <li>Conception de contenus pour renforcer la visibilité et l’engagement des marques.</li>
+      </ul>
+    </div>
+    <div class="job">
+      <h3>Content Creator / Communication digitale</h3>
+      <p class="when">2024 – 2025</p>
+      <ul>
+        <li>Participation à la conception de contenus pour valoriser la marque.</li>
+        <li>Contenus adaptés à TikTok, Instagram et autres plateformes sociales.</li>
+      </ul>
+    </div>
+    <div class="job" style="padding-bottom:0">
+      <h3>Stagiaire développeur web</h3>
+      <p class="when">2025</p>
+      <ul>
+        <li>Conception et intégration de fonctionnalités avec ASP.NET Core et SQL Server.</li>
+        <li>Travail en équipe dans un environnement professionnel.</li>
+      </ul>
+    </div>
+  </div>
+  <div>
+    <div class="box">
+      <h3>Compétences</h3>
+      <div class="tags">
+        <span class="tag">Création de contenu vidéo</span>
+        <span class="tag">Contenus réseaux sociaux</span>
+        <span class="tag">Montage vidéo – CapCut</span>
+        <span class="tag">Gestion de réseaux sociaux</span>
+      </div>
+    </div>
+    <div class="box edu">
+      <h3>Formation</h3>
+      <p><b>Bachelor – Intelligence Artificielle &amp; Big Data</b><span>2025 – 2026</span></p>
+      <p style="margin-bottom:0"><b>Formation en création de contenu</b><span>2024</span></p>
+    </div>
+    <div class="box">
+      <h3>Langues</h3>
+      <div class="tags">
+        <span class="tag">Français · Courant</span>
+        <span class="tag">Anglais · Intermédiaire</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section id="contact" style="border-top:none;padding-top:0"><div class="wrap">
+  <div class="contact">
+    <div>
+      <h2>Travaillons ensemble</h2>
+      <p>Un projet de contenu ou de gestion de réseaux sociaux ? Écrivez-moi.</p>
+      <p>+237 657 84 86 90 · emmanueltchoffo19@gmail.com</p>
+    </div>
+    <div class="cta" style="margin-top:0">
+      <a class="btn primary" href="https://wa.me/237657848690">WhatsApp</a>
+      <a class="btn ghost" href="mailto:emmanueltchoffo19@gmail.com">E-mail</a>
+    </div>
+  </div>
+</div></section>
+
+<footer>© Emmanuel Tchoffo · Content Creator, Douala</footer>
+
+<script src="publications.js"></script>
+<script>
+const PUBLICATIONS = window.PUBLICATIONS || [];
+
+
+const grid = document.getElementById('grid');
+const filters = document.getElementById('filters');
+let current = 'Tout';
+
+function render(){
+  grid.innerHTML = '';
+  const list = PUBLICATIONS.filter(p => current === 'Tout' || p.plateforme === current);
+  if(!PUBLICATIONS.length){
+    grid.style.display = 'block';
+    grid.innerHTML = '<div class="empty"><b>Nouvelles publications en cours d’ajout</b>Contactez-moi sur WhatsApp pour découvrir mes dernières réalisations.</div>';
+    return;
+  }
+  grid.style.display = '';
+  list.forEach(p => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    const thumb = document.createElement('div');
+    thumb.className = 'thumb';
+    if(p.video){
+      const v = document.createElement('video');
+      v.src = p.video; v.controls = true; v.playsInline = true; v.preload = 'metadata';
+      v.setAttribute('playsinline','');
+      if(p.image) v.poster = p.image;
+      thumb.appendChild(v);
+    } else if(p.image){
+      const img = document.createElement('img');
+      img.src = p.image; img.alt = p.titre || ''; img.loading = 'lazy';
+      thumb.appendChild(img);
+    } else {
+      thumb.textContent = p.plateforme || 'Publication';
+    }
+    if(p.plateforme){
+      const b = document.createElement('span'); b.className = 'badge'; b.textContent = p.plateforme; thumb.appendChild(b);
+    }
+    const body = document.createElement('div');
+    body.className = 'card-body';
+    const h = document.createElement('h3'); h.textContent = p.titre || ''; body.appendChild(h);
+    const m = document.createElement('p'); m.className = 'meta';
+    m.textContent = [p.client, p.date].filter(Boolean).join(' · '); body.appendChild(m);
+    if(p.lien){
+      const a = document.createElement('a'); a.href = p.lien; a.target = '_blank'; a.rel = 'noopener';
+      a.textContent = 'Voir la publication →'; body.appendChild(a);
+    }
+    card.append(thumb, body);
+    grid.appendChild(card);
+  });
+}
+
+function buildFilters(){
+  const plats = ['Tout', ...new Set(PUBLICATIONS.map(p => p.plateforme).filter(Boolean))];
+  if(plats.length < 3){ filters.style.display = 'none'; return; }
+  plats.forEach(pl => {
+    const c = document.createElement('button');
+    c.className = 'chip' + (pl === current ? ' on' : '');
+    c.textContent = pl;
+    c.onclick = () => { current = pl; [...filters.children].forEach(x => x.classList.toggle('on', x.textContent === pl)); render(); };
+    filters.appendChild(c);
+  });
+}
+buildFilters(); render();
+</script>
+</body>
+</html>
